@@ -23,16 +23,12 @@ class NetworkModule(private val baseUrl: String) {
         const val TIMEOUT_IN_SEC: Int = 15
     }
 
-    @Provides
-    @Singleton
-    internal fun provideOkHttpCache(application: Context): Cache {
+    @Provides @Singleton internal fun provideOkHttpCache(application: Context): Cache {
         val cacheSize = 10 * 1024 * 1024 // 10 MiB
         return Cache(application.cacheDir, cacheSize.toLong())
     }
 
-    @Provides
-    @Singleton
-    internal fun provideOkHttpClient(cache: Cache, interceptors: ArrayList<Interceptor>): OkHttpClient {
+    @Provides @Singleton internal fun provideOkHttpClient(cache: Cache, interceptors: ArrayList<Interceptor>): OkHttpClient {
         val client = OkHttpClient.Builder()
         client.connectTimeout(TIMEOUT_IN_SEC.toLong(), TimeUnit.SECONDS)
         client.readTimeout(TIMEOUT_IN_SEC.toLong(), TimeUnit.SECONDS)
@@ -45,25 +41,19 @@ class NetworkModule(private val baseUrl: String) {
         return client.build()
     }
 
-    @Provides
-    @Singleton
-    internal fun provideGson(): Gson {
+    @Provides @Singleton internal fun provideGson(): Gson {
         return GsonBuilder().setLenient().create()
     }
 
-    @Provides
-    internal fun providesChuckInterceptor(context: Context): ChuckInterceptor {
+    @Provides internal fun providesChuckInterceptor(context: Context): ChuckInterceptor {
         return ChuckInterceptor(context)
     }
 
-    @Provides
-    internal fun providesInterceptors(chuckInterceptor: ChuckInterceptor): ArrayList<Interceptor> {
+    @Provides internal fun providesInterceptors(chuckInterceptor: ChuckInterceptor): ArrayList<Interceptor> {
         return arrayListOf(chuckInterceptor)
     }
 
-    @Provides
-    @Singleton
-    internal fun provideRetrofitService(okHttpClient: OkHttpClient, gson: Gson): MoviesService {
+    @Provides @Singleton internal fun provideRetrofitService(okHttpClient: OkHttpClient, gson: Gson): MoviesService {
         val retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))

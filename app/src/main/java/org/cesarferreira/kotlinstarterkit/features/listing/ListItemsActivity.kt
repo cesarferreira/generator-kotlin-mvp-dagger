@@ -13,7 +13,7 @@ import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
 import org.cesarferreira.kotlinstarterkit.navigation.Navigator
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), ListingView {
+class ListItemsActivity : BaseActivity(), ListItemsView {
 
     @Inject
     lateinit var navigator: Navigator
@@ -22,10 +22,10 @@ class MainActivity : BaseActivity(), ListingView {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var presenter: ListingPresenter
+    lateinit var presenter: ListItemsPresenter
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private lateinit var adapter: ListRecyclerViewAdapter
+    private lateinit var adapter: ListItemsAdapter
 
     private var items = ArrayList<MovieEntity>()
 
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity(), ListingView {
         layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = layoutManager
 
-        adapter = ListRecyclerViewAdapter(picasso, items)
+        adapter = ListItemsAdapter(picasso, items)
         recyclerView.adapter = adapter
 
     }

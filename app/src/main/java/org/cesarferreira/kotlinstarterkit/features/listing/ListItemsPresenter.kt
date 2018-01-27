@@ -8,12 +8,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ListingPresenter
-@Inject constructor(private val service: MoviesService) : MVP.BasePresenter<ListingView>() {
+class ListItemsPresenter
+@Inject constructor(private val service: MoviesService) : MVP.BasePresenter<ListItemsView>() {
 
-    private lateinit var mView: ListingView
+    private lateinit var mView: ListItemsView
 
-    override fun attachView(view: ListingView) {
+    override fun attachView(view: ListItemsView) {
         mView = view
     }
 

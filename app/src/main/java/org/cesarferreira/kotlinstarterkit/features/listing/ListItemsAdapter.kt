@@ -9,11 +9,13 @@ import kotlinx.android.synthetic.main.movie_list_row.view.*
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
 
-class ListRecyclerViewAdapter(private val picasso: Picasso, private val items: List<MovieEntity>)
-    : RecyclerView.Adapter<ListRecyclerViewAdapter.ItemViewHolder>() {
+class ListItemsAdapter(private val picasso: Picasso, private val items: List<MovieEntity>)
+    : RecyclerView.Adapter<ListItemsAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ItemViewHolder {
-        val itemView = LayoutInflater.from(parent?.context).inflate(R.layout.movie_list_row, parent, false)
+        val itemView = LayoutInflater.from(parent?.context)
+                .inflate(R.layout.movie_list_row, parent, false)
+
         return ItemViewHolder(itemView)
     }
 
@@ -23,14 +25,23 @@ class ListRecyclerViewAdapter(private val picasso: Picasso, private val items: L
         val movie = items[position]
 
         (holder as ItemViewHolder)
-                .bind(picasso, movie.title, movie.genre, movie.id.toString())
+                .bind(picasso,
+                        movie.title,
+                        movie.genre,
+                        movie.id.toString(),
+                        movie.poster)
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(picasso: Picasso, title: String, year: String, genre: String) {
+        fun bind(picasso: Picasso, title: String, year: String, genre: String, poster: String) {
             itemView.title.text = title
             itemView.year.text = year
             itemView.genre.text = genre
+
+            picasso.load(poster)
+                    .placeholder(R.color.picassoPlaceholder)
+                    .error(R.color.picassoError)
+                    .into(itemView.thumbnail)
         }
     }
 }

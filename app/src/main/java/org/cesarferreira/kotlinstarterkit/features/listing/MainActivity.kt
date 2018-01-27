@@ -3,8 +3,10 @@ package org.cesarferreira.kotlinstarterkit.features.listing
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import butterknife.BindView
-import butterknife.ButterKnife
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import org.cesarferreira.kotlinstarterkit.BaseActivity
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
@@ -17,10 +19,10 @@ class MainActivity : BaseActivity(), ListingView {
     lateinit var navigator: Navigator
 
     @Inject
-    lateinit var presenter: ListingPresenter
+    lateinit var picasso: Picasso
 
-    @BindView(R.id.my_recycler_view)
-    lateinit var recyclerView: RecyclerView
+    @Inject
+    lateinit var presenter: ListingPresenter
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ListRecyclerViewAdapter
@@ -30,8 +32,6 @@ class MainActivity : BaseActivity(), ListingView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        ButterKnife.bind(this)
 
         appComponent.inject(this)
 
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity(), ListingView {
         layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = layoutManager
 
-        adapter = ListRecyclerViewAdapter(items)
+        adapter = ListRecyclerViewAdapter(picasso, items)
         recyclerView.adapter = adapter
 
     }
@@ -59,7 +59,7 @@ class MainActivity : BaseActivity(), ListingView {
     }
 
     override fun hideLoading() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressBar.visibility = GONE
     }
 
     override fun showError(throwable: Throwable) {
@@ -67,7 +67,7 @@ class MainActivity : BaseActivity(), ListingView {
     }
 
     override fun showLoading() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressBar.visibility = VISIBLE
     }
 
     override fun onDestroy() {

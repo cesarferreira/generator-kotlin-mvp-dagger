@@ -1,12 +1,13 @@
 package org.cesarferreira.kotlinstarterkit.di
 
-import android.app.Application
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
 import retrofit2.Retrofit
@@ -31,10 +32,15 @@ class NetworkModule(private val baseUrl: String) {
 
     @Provides
     @Singleton
-    internal fun provideOkHttpClient(cache: Cache): OkHttpClient {
+    internal fun provideOkHttpClient(cache: Cache, interceptors: ArrayList<Interceptor>): OkHttpClient {
         val client = OkHttpClient.Builder()
         client.connectTimeout(TIMEOUT_IN_SEC.toLong(), TimeUnit.SECONDS)
         client.readTimeout(TIMEOUT_IN_SEC.toLong(), TimeUnit.SECONDS)
+
+        interceptors.forEach {
+            client.addInterceptor(it)
+        }
+
         client.cache(cache)
         return client.build()
     }
@@ -43,6 +49,16 @@ class NetworkModule(private val baseUrl: String) {
     @Singleton
     internal fun provideGson(): Gson {
         return GsonBuilder().setLenient().create()
+    }
+
+    @Provides
+    internal fun providesChuckInterceptor(context: Context): ChuckInterceptor {
+        return ChuckInterceptor(context)
+    }
+
+    @Provides
+    internal fun providesInterceptors(chuckInterceptor: ChuckInterceptor): ArrayList<Interceptor> {
+        return arrayListOf(chuckInterceptor)
     }
 
     @Provides

@@ -1,18 +1,17 @@
 package org.cesarferreira.kotlinstarterkit
 
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import org.cesarferreira.kotlinstarterkit.di.AppComponent
+import org.cesarferreira.kotlinstarterkit.di.ApplicationComponent
 
 open class BaseActivity : AppCompatActivity() {
 
-    private val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+    protected val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (application as MyApplication).appComponent
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        appComponent.inject(this);
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        appComponent.inject(this);
+//    }
 }

@@ -5,11 +5,15 @@ import org.cesarferreira.kotlinstarterkit.di.*
 
 class MyApplication : Application() {
 
-    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        DaggerAppComponent.builder()
-                .appModule(ApplicationModule(this))
-                .imageModule(ImageLoadingModule())
-                .netModule(NetworkModule("https://movies-sample.herokuapp.com/"))
+    companion object {
+        const val BASE_URL: String = "https://movies-sample.herokuapp.com/"
+    }
+
+    val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        DaggerApplicationComponent.builder()
+                .applicationModule(ApplicationModule(this))
+                .imageLoadingModule(ImageLoadingModule())
+                .networkModule(NetworkModule(BASE_URL))
                 .build()
     }
 

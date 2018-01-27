@@ -1,24 +1,24 @@
 package org.cesarferreira.kotlinstarterkit.di
 
 import android.app.Application
-
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-
-import java.util.concurrent.TimeUnit
-
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 class NetworkModule(private val baseUrl: String) {
 
     companion object {
-        const val TIMEOUT_IN_SEC : Int = 15
+        const val TIMEOUT_IN_SEC: Int = 15
     }
 
     @Provides
@@ -44,16 +44,16 @@ class NetworkModule(private val baseUrl: String) {
         return GsonBuilder().setLenient().create()
     }
 
-//    @Provides
-//    @Singleton
-//    internal fun provideRecipesService(okHttpClient: OkHttpClient, gson: Gson): RecipesService {
-//        val retrofit = Retrofit.Builder()
-//                .baseUrl(baseUrl)
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .client(okHttpClient)
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .build()
-//
-//        return retrofit.create(RecipesService::class.java)
-//    }
+    @Provides
+    @Singleton
+    internal fun provideRetrofitService(okHttpClient: OkHttpClient, gson: Gson): MoviesService {
+        val retrofit = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+
+        return retrofit.create(MoviesService::class.java)
+    }
 }

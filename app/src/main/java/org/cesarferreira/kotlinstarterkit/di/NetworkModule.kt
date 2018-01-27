@@ -1,6 +1,7 @@
 package org.cesarferreira.kotlinstarterkit.di
 
 import android.app.Application
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -23,7 +24,7 @@ class NetworkModule(private val baseUrl: String) {
 
     @Provides
     @Singleton
-    internal fun provideOkHttpCache(application: Application): Cache {
+    internal fun provideOkHttpCache(application: Context): Cache {
         val cacheSize = 10 * 1024 * 1024 // 10 MiB
         return Cache(application.cacheDir, cacheSize.toLong())
     }

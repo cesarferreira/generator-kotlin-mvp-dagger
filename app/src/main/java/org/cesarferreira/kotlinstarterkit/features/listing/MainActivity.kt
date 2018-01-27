@@ -19,11 +19,11 @@ class MainActivity : BaseActivity(), ListingView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        appComponent.inject(this);
+        appComponent.inject(this)
 
         presenter.attachView(this)
 
-//        presenter.fetchData()
+        presenter.fetchData()
     }
 
     override fun displayData(data: List<MovieEntity>) {

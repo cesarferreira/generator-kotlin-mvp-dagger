@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
-import org.cesarferreira.kotlinstarterkit.base.BaseActivity
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
+import org.cesarferreira.kotlinstarterkit.base.BaseActivity
+import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 import org.cesarferreira.kotlinstarterkit.features.common.Constants
-import org.cesarferreira.kotlinstarterkit.features.common.LoadingView
 import javax.inject.Inject
 
 
-class DetailsActivity : BaseActivity(), DetailsView, LoadingView {
+class DetailsActivity : BaseActivity(), DetailsView {
 
     @Inject lateinit var picasso: Picasso
     @Inject lateinit var presenter: DetailsPresenter
@@ -28,8 +27,8 @@ class DetailsActivity : BaseActivity(), DetailsView, LoadingView {
         presenter.fetchData(intent.getStringExtra(Constants.ITEM_KEY))
     }
 
-    override fun displayDetails(movieEntity: MovieEntity) {
-        picasso.load(movieEntity.poster)
+    override fun displayDetails(movieDO: MovieDO) {
+        picasso.load(movieDO.poster)
                 .placeholder(R.color.picassoPlaceholder)
                 .error(R.color.picassoError)
                 .into(posterImageView)

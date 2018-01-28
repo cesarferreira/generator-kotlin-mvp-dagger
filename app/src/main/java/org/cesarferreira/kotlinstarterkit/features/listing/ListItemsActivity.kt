@@ -5,11 +5,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-import org.cesarferreira.kotlinstarterkit.base.BaseActivity
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
+import org.cesarferreira.kotlinstarterkit.base.BaseActivity
+import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 import org.cesarferreira.kotlinstarterkit.navigation.Navigator
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ListItemsAdapter
 
-    private var items = ArrayList<MovieEntity>()
+    private var items = ArrayList<MovieDO>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +53,7 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
 
     }
 
-    override fun displayData(data: List<MovieEntity>) {
+    override fun displayData(data: List<MovieDO>) {
         items.addAll(data)
         adapter.notifyDataSetChanged()
     }
@@ -62,6 +63,8 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
     }
 
     override fun showError(throwable: Throwable) {
+        progressBar.visibility = GONE
+        Toast.makeText(applicationContext, throwable.message, Toast.LENGTH_LONG).show()
     }
 
     override fun showLoading() {

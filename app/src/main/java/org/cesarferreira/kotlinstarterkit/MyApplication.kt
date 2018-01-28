@@ -1,6 +1,7 @@
 package org.cesarferreira.kotlinstarterkit
 
 import android.app.Application
+import com.squareup.leakcanary.LeakCanary
 import org.cesarferreira.kotlinstarterkit.di.*
 
 class MyApplication : Application() {
@@ -21,5 +22,9 @@ class MyApplication : Application() {
         super.onCreate()
 
         appComponent.inject(this)
+
+        if (BuildConfig.DEBUG) {
+            LeakCanary.install(this)
+        }
     }
 }

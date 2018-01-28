@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_list_row.view.*
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
+import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 
 class ListItemsAdapter(private val picasso: Picasso,
-                       private val items: List<MovieEntity>,
+                       private val items: ArrayList<MovieDO>,
                        private val onMovieClickListener: OnMovieClickListener)
     : RecyclerView.Adapter<ListItemsAdapter.ItemViewHolder>() {
 
@@ -23,17 +23,16 @@ class ListItemsAdapter(private val picasso: Picasso,
 
     override fun onBindViewHolder(holder: ItemViewHolder?, position: Int) {
         val movie = items[position]
-
         (holder as ItemViewHolder).bind(picasso, movie)
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(picasso: Picasso, movie: MovieEntity) {
+        fun bind(picasso: Picasso, movie: MovieDO) {
             itemView.title.text = movie.title
             itemView.genre.text = movie.genre
             itemView.year.text = movie.year
 
-            itemView.setOnClickListener { onMovieClickListener.onClick(movie.id) }
+            itemView.setOnClickListener { movie.id?.let { id -> onMovieClickListener.onClick(id) } }
 
             picasso.load(movie.poster)
                     .placeholder(R.color.picassoPlaceholder)

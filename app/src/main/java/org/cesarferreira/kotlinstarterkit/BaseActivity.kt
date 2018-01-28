@@ -1,5 +1,6 @@
 package org.cesarferreira.kotlinstarterkit
 
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import org.cesarferreira.kotlinstarterkit.di.ApplicationComponent
 
@@ -10,8 +11,8 @@ open class BaseActivity : AppCompatActivity() {
     }
 
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        appComponent.inject(this);
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        appComponent.inject(this)
+    }
 }

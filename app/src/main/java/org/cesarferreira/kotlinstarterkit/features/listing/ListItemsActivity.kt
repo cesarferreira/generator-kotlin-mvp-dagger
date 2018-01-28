@@ -7,7 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-import org.cesarferreira.kotlinstarterkit.BaseActivity
+import org.cesarferreira.kotlinstarterkit.base.BaseActivity
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
 import org.cesarferreira.kotlinstarterkit.navigation.Navigator

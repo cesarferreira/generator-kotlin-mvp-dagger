@@ -1,6 +1,6 @@
 package org.cesarferreira.kotlinstarterkit.features.listing
 
-import org.cesarferreira.kotlinstarterkit.MVP
+import org.cesarferreira.kotlinstarterkit.base.MVP
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
 import org.cesarferreira.kotlinstarterkit.executor.BackgroundThread
 import org.cesarferreira.kotlinstarterkit.executor.UIThread

@@ -1,7 +1,8 @@
-package org.cesarferreira.kotlinstarterkit
+package org.cesarferreira.kotlinstarterkit.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import org.cesarferreira.kotlinstarterkit.MyApplication
 import org.cesarferreira.kotlinstarterkit.di.ApplicationComponent
 
 open class BaseActivity : AppCompatActivity() {

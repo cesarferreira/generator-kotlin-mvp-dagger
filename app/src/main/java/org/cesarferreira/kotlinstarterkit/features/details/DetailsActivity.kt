@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
-import org.cesarferreira.kotlinstarterkit.BaseActivity
+import org.cesarferreira.kotlinstarterkit.base.BaseActivity
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
 import org.cesarferreira.kotlinstarterkit.features.common.Constants
+import org.cesarferreira.kotlinstarterkit.features.common.LoadingView
 import javax.inject.Inject
 
 
-class DetailsActivity : BaseActivity(), DetailsView {
+class DetailsActivity : BaseActivity(), DetailsView, LoadingView {
 
     @Inject lateinit var picasso: Picasso
     @Inject lateinit var presenter: DetailsPresenter

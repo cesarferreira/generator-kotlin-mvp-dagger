@@ -15,14 +15,9 @@ import javax.inject.Inject
 
 class ListItemsActivity : BaseActivity(), ListItemsView {
 
-    @Inject
-    lateinit var navigator: Navigator
-
-    @Inject
-    lateinit var picasso: Picasso
-
-    @Inject
-    lateinit var presenter: ListItemsPresenter
+    @Inject lateinit var navigator: Navigator
+    @Inject lateinit var picasso: Picasso
+    @Inject lateinit var presenter: ListItemsPresenter
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ListItemsAdapter
@@ -32,7 +27,6 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         appComponent.inject(this)
 
         presenter.attachView(this)
@@ -48,7 +42,12 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
         layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = layoutManager
 
-        adapter = ListItemsAdapter(picasso, items)
+        adapter = ListItemsAdapter(picasso, items, object : OnMovieClickListener {
+            override fun onClick(id: String) {
+                navigator.navigateToDetails(applicationContext, id)
+            }
+        })
+
         recyclerView.adapter = adapter
 
     }
@@ -63,7 +62,6 @@ class ListItemsActivity : BaseActivity(), ListItemsView {
     }
 
     override fun showError(throwable: Throwable) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showLoading() {

@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.movie_list_row.view.*
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.entities.MovieEntity
 
-class ListItemsAdapter(private val picasso: Picasso, private val items: List<MovieEntity>)
+class ListItemsAdapter(private val picasso: Picasso, private val items: List<MovieEntity>, private val onMovieClickListener: OnMovieClickListener)
     : RecyclerView.Adapter<ListItemsAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ItemViewHolder {
@@ -25,20 +25,18 @@ class ListItemsAdapter(private val picasso: Picasso, private val items: List<Mov
         val movie = items[position]
 
         (holder as ItemViewHolder)
-                .bind(picasso,
-                        movie.title,
-                        movie.genre,
-                        movie.id.toString(),
-                        movie.poster)
+                .bind(picasso, movie)
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(picasso: Picasso, title: String, year: String, genre: String, poster: String) {
-            itemView.title.text = title
-            itemView.year.text = year
-            itemView.genre.text = genre
+        fun bind(picasso: Picasso, movie: MovieEntity) {
+            itemView.title.text = movie.title
+            itemView.year.text = movie.year
+            itemView.genre.text = movie.genre
 
-            picasso.load(poster)
+            itemView.setOnClickListener { onMovieClickListener.onClick(movie.id) }
+
+            picasso.load(movie.poster)
                     .placeholder(R.color.picassoPlaceholder)
                     .error(R.color.picassoError)
                     .into(itemView.thumbnail)

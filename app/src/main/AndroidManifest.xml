@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".features.listing.ListItemsActivity">
+        <activity
+            android:name=".features.listing.ListItemsActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
+        <activity
+            android:name=".features.details.DetailsActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

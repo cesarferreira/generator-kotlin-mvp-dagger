@@ -1,15 +1,17 @@
 package org.cesarferreira.kotlinstarterkit.features.listing
 
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import org.cesarferreira.kotlinstarterkit.MVP
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
+import org.cesarferreira.kotlinstarterkit.executor.BackgroundThread
+import org.cesarferreira.kotlinstarterkit.executor.UIThread
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ListItemsPresenter
-@Inject constructor(private val service: MoviesService) : MVP.BasePresenter<ListItemsView>() {
+@Inject constructor(private val service: MoviesService,
+                    private val backgroundThread: BackgroundThread,
+                    private val uiThread: UIThread) : MVP.BasePresenter<ListItemsView>() {
 
     private lateinit var mView: ListItemsView
 
@@ -20,14 +22,12 @@ class ListItemsPresenter
     fun fetchData() {
         subscription =
                 service.getMovies()
-                        .subscribeOn(Schedulers.io())// inject me
-                        .observeOn(AndroidSchedulers.mainThread()) // inject me
+                        .subscribeOn(backgroundThread.ioScheduler)
+                        .observeOn(uiThread.scheduler)
                         .doOnSubscribe({ showLoading() })
                         .doOnComplete({ hideLoading() })
-                        .subscribe(({ mView.displayData(it.data) }), ({ showError(it) }))
-
+                        .subscribe({ mView.displayData(it.data) }, { showError(it) })
     }
-
 
     private fun showLoading() {
         mView.showLoading()
@@ -41,6 +41,4 @@ class ListItemsPresenter
         mView.hideLoading()
         mView.showError(throwable)
     }
-
-
 }

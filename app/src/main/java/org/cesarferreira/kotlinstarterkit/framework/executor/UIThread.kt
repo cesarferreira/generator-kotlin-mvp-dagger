@@ -1,4 +1,4 @@
-package org.cesarferreira.kotlinstarterkit.executor
+package org.cesarferreira.kotlinstarterkit.framework.executor
 
 
 import javax.inject.Inject

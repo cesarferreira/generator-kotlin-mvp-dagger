@@ -1,10 +1,10 @@
 package org.cesarferreira.kotlinstarterkit.features.details
 
-import org.cesarferreira.kotlinstarterkit.base.BasePresenter
+import org.cesarferreira.kotlinstarterkit.framework.BasePresenter
 import org.cesarferreira.kotlinstarterkit.data.entities.mappers.MovieEntityToMovieDO
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
-import org.cesarferreira.kotlinstarterkit.executor.BackgroundThread
-import org.cesarferreira.kotlinstarterkit.executor.UIThread
+import org.cesarferreira.kotlinstarterkit.framework.executor.BackgroundThread
+import org.cesarferreira.kotlinstarterkit.framework.executor.UIThread
 import javax.inject.Inject
 import javax.inject.Singleton
 

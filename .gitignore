@@ -11,3 +11,9 @@
 buck-out/
 .okbuck
 .buckd
+
+.project
+
+.settings/
+
+.classpath

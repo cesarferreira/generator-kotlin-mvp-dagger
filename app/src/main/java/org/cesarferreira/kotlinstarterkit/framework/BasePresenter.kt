@@ -1,4 +1,4 @@
-package org.cesarferreira.kotlinstarterkit.base
+package org.cesarferreira.kotlinstarterkit.framework
 
 import io.reactivex.disposables.Disposable
 

@@ -1,7 +1,7 @@
 package org.cesarferreira.kotlinstarterkit.di
 
 import dagger.Component
-import org.cesarferreira.kotlinstarterkit.base.BaseActivity
+import org.cesarferreira.kotlinstarterkit.framework.BaseActivity
 import org.cesarferreira.kotlinstarterkit.MyApplication
 import org.cesarferreira.kotlinstarterkit.features.details.DetailsActivity
 import org.cesarferreira.kotlinstarterkit.features.listing.ListItemsActivity

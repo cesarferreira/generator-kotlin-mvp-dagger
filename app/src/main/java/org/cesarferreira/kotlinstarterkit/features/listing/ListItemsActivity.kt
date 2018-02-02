@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.base.BaseActivity
+import org.cesarferreira.kotlinstarterkit.framework.BaseActivity
 import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 import org.cesarferreira.kotlinstarterkit.navigation.Navigator
 import javax.inject.Inject

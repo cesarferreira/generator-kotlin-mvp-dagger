@@ -1,6 +1,6 @@
-package org.cesarferreira.kotlinstarterkit.base
+package org.cesarferreira.kotlinstarterkit.framework
 
-abstract class BaseMapper<SOURCE, TARGET> {
+abstract class BaseMapper<in SOURCE, out TARGET> {
 
     /**
      * Transforms a type into another
@@ -16,8 +16,6 @@ abstract class BaseMapper<SOURCE, TARGET> {
      * @param list list of sources that will be transformed
      * @return the list of transformed objects
      */
-    fun transform(list: List<SOURCE>): List<TARGET> {
-        return list.map { transform(it) }
-    }
+    fun transform(list: List<SOURCE>): List<TARGET> = list.map { transform(it) }
 
 }

@@ -5,7 +5,7 @@ import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.base.BaseActivity
+import org.cesarferreira.kotlinstarterkit.framework.BaseActivity
 import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 import org.cesarferreira.kotlinstarterkit.features.common.Constants
 import javax.inject.Inject

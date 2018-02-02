@@ -1,4 +1,4 @@
-package org.cesarferreira.kotlinstarterkit.base
+package org.cesarferreira.kotlinstarterkit.framework
 
 import android.support.v7.app.AppCompatActivity
 import org.cesarferreira.kotlinstarterkit.MyApplication

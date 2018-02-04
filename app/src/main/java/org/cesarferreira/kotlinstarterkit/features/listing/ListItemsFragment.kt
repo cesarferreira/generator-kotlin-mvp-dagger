@@ -5,7 +5,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_list_movies.*
+import kotlinx.android.synthetic.main.fragment_list_items.*
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
 import org.cesarferreira.kotlinstarterkit.framework.BaseFragment
@@ -21,7 +21,7 @@ class ListItemsFragment : BaseFragment(), ListItemsView {
     private lateinit var adapter: ListItemsAdapter
     private var items = ArrayList<MovieDO>()
 
-    override fun layoutId(): Int = R.layout.fragment_list_movies
+    override fun layoutId(): Int = R.layout.fragment_list_items
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

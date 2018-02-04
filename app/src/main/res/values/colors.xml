@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFFFFF</color>
 
-    <color name="colorSecondary">#7f1a18</color>
+    <color name="colorSecondary">#ff0000</color>
     <color name="colorTextPrimary">#FFFFFF</color>
-    <color name="colorTextSecondary">#7f1a18</color>
+    <color name="colorTextSecondary">#AFC81C</color>
 
     <color name="picassoError">#F44336</color>
     <color name="picassoPlaceholder">#9E9E9E</color>
+    <color name="black">#000000</color>
 
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.cesarferreira.kotlinstarterkit.R
 import org.cesarferreira.kotlinstarterkit.data.models.MovieDetailsDO
 import org.cesarferreira.kotlinstarterkit.features.common.Constants
@@ -35,6 +36,8 @@ class DetailsFragment : BaseFragment(), DetailsView {
         movieSummary.text = movieDO.summary
         movieYear.text = movieDO.year
 
+        activity!!.toolbar.title = movieDO.title
+
         picasso.load(movieDO.poster)
                 .placeholder(R.color.black)
                 .error(R.color.picassoError)
@@ -46,7 +49,7 @@ class DetailsFragment : BaseFragment(), DetailsView {
     }
 
     override fun showError(throwable: Throwable) {
-        // todo
+        TODO()
     }
 
     override fun showLoading() {

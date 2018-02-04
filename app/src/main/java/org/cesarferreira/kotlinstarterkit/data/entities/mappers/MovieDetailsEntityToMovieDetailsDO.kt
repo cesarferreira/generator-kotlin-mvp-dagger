@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieEntityToMovieDetailsDO
+class MovieDetailsEntityToMovieDetailsDO
 @Inject constructor() : BaseMapper<MovieDetailsEntity, MovieDetailsDO>() {
     override fun transform(source: MovieDetailsEntity): MovieDetailsDO {
         return MovieDetailsDO(

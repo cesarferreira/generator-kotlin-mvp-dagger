@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieToMovieDO
+class MovieEntityToMovieDO
 @Inject constructor()
     : BaseMapper<MovieEntity, MovieDO>() {
 

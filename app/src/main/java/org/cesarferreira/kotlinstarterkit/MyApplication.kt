@@ -7,7 +7,7 @@ import org.cesarferreira.kotlinstarterkit.di.*
 class MyApplication : Application() {
 
     companion object {
-        const val BASE_URL: String = "https://movies-sample.herokuapp.com/"
+        const val BASE_URL: String = "https://movie-sample-api.herokuapp.com/"
     }
 
     val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {

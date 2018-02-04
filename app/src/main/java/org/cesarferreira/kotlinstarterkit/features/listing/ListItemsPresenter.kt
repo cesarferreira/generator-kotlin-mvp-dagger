@@ -1,6 +1,6 @@
 package org.cesarferreira.kotlinstarterkit.features.listing
 
-import org.cesarferreira.kotlinstarterkit.framework.BasePresenter
+import org.cesarferreira.kotlinstarterkit.framework.base.BasePresenter
 import org.cesarferreira.kotlinstarterkit.data.entities.mappers.MovieEntityToMovieDO
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
 import org.cesarferreira.kotlinstarterkit.framework.executor.BackgroundThread

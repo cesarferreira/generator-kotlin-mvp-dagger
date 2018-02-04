@@ -1,12 +1,28 @@
 package org.cesarferreira.kotlinstarterkit.framework
 
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import org.cesarferreira.kotlinstarterkit.MyApplication
-import org.cesarferreira.kotlinstarterkit.di.ApplicationComponent
+import kotlinx.android.synthetic.main.toolbar.*
+import org.cesarferreira.kotlinstarterkit.R
+import org.cesarferreira.kotlinstarterkit.framework.extensions.inTransaction
 
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
-    protected val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        (application as MyApplication).appComponent
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_layout)
+//        setSupportActionBar(toolbar)
+        addFragment(savedInstanceState)
     }
+
+    override fun onBackPressed() {
+        (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as BaseFragment).onBackPressed()
+        super.onBackPressed()
+    }
+
+    private fun addFragment(savedInstanceState: Bundle?) =
+            savedInstanceState
+                    ?: supportFragmentManager.inTransaction { add(R.id.fragmentContainer, fragment()) }
+
+    abstract fun fragment(): BaseFragment
 }

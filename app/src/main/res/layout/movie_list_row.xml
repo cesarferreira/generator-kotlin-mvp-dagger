@@ -1,46 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movieCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
-    android:padding="5dp">
+    android:layout_margin="3dp"
+    card_view:cardBackgroundColor="@color/colorPrimary"
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation">
 
     <ImageView
         android:id="@+id/thumbnail"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentLeft="true"
-        android:padding="5dp"
-        android:src="@mipmap/ic_launcher" />
+        style="@style/MoviePoster"
+        android:layout_height="180dp" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="title"
-        android:textColor="@android:color/black"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+    <!-- Used for the ripple effect on touch -->
+    <LinearLayout
+        android:id="@+id/movieHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ripple_effect"
+        android:orientation="horizontal" />
 
-    <TextView
-        android:id="@+id/genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="genre" />
-
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/genre"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="year" />
-
-</RelativeLayout>
+</android.support.v7.widget.CardView>

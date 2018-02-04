@@ -1,10 +1,9 @@
 package org.cesarferreira.kotlinstarterkit.di
 
 import dagger.Component
-import org.cesarferreira.kotlinstarterkit.framework.BaseActivity
 import org.cesarferreira.kotlinstarterkit.MyApplication
-import org.cesarferreira.kotlinstarterkit.features.details.DetailsActivity
-import org.cesarferreira.kotlinstarterkit.features.listing.ListItemsActivity
+import org.cesarferreira.kotlinstarterkit.features.details.DetailsFragment
+import org.cesarferreira.kotlinstarterkit.features.listing.ListItemsFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -14,8 +13,7 @@ import javax.inject.Singleton
         NetworkModule::class)
 )
 interface ApplicationComponent {
-    fun inject(target: BaseActivity)
-    fun inject(target: ListItemsActivity)
-    fun inject(target: DetailsActivity)
     fun inject(target: MyApplication)
+    fun inject(target: ListItemsFragment)
+    fun inject(target: DetailsFragment)
 }

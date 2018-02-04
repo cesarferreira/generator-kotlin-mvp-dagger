@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="colorSecondary">#7f1a18</color>
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#7f1a18</color>
 
     <color name="picassoError">#F44336</color>
     <color name="picassoPlaceholder">#9E9E9E</color>

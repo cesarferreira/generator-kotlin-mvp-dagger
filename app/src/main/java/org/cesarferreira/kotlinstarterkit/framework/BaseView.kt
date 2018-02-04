@@ -1,3 +1,0 @@
-package org.cesarferreira.kotlinstarterkit.framework
-
-interface BaseView

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Card view. -->
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+
+    <dimen name="movie_details_title">20dp</dimen>
+    <dimen name="movie_details_text">15dp</dimen>
+</resources>

@@ -28,9 +28,9 @@ class ListItemsAdapter(private val picasso: Picasso,
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(picasso: Picasso, movie: MovieDO) {
-            itemView.title.text = movie.title
-            itemView.genre.text = movie.genre
-            itemView.year.text = movie.year
+//            itemView.title.text = movie.title
+//            itemView.genre.text = movie.genre
+//            itemView.year.text = movie.year
 
             itemView.setOnClickListener { movie.id?.let { id -> onMovieClickListener.onClick(id) } }
 

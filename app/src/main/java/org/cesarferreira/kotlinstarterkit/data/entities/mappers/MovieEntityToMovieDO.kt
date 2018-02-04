@@ -14,8 +14,9 @@ class MovieEntityToMovieDO
                 toBeTransformed.id,
                 toBeTransformed.title,
                 toBeTransformed.year,
-                toBeTransformed.genre,
-                toBeTransformed.plot,
+                toBeTransformed.cast,
+                toBeTransformed.director,
+                toBeTransformed.summary,
                 toBeTransformed.poster)
     }
 

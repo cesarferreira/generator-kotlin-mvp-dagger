@@ -29,10 +29,16 @@ class DetailsFragment : BaseFragment(), DetailsView {
     }
 
     override fun displayDetails(movieDO: MovieDO) {
+
+        movieCast.text = movieDO.cast
+        movieDirector.text = movieDO.director
+        movieSummary.text = movieDO.summary
+        movieYear.text = movieDO.year
+
         picasso.load(movieDO.poster)
-                .placeholder(R.color.picassoPlaceholder)
+                .placeholder(R.color.black)
                 .error(R.color.picassoError)
-                .into(posterImageView)
+                .into(moviePoster)
     }
 
     override fun hideLoading() {

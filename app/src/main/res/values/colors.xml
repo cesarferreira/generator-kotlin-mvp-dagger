@@ -12,4 +12,6 @@
     <color name="picassoPlaceholder">#9E9E9E</color>
     <color name="black">#000000</color>
 
+    <color name="translucentBackground">#ED000000</color>
+
 </resources>

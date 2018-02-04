@@ -5,10 +5,10 @@ abstract class BaseMapper<in SOURCE, out TARGET> {
     /**
      * Transforms a type into another
      *
-     * @param toBeTransformed source that will be transformed
+     * @param source source that will be transformed
      * @return the transformed object
      */
-    abstract fun transform(toBeTransformed: SOURCE): TARGET
+    abstract fun transform(source: SOURCE): TARGET
 
     /**
      * Transforms a list of types into another type

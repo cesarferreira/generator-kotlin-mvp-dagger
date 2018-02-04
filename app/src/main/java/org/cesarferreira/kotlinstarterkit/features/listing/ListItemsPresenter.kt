@@ -1,8 +1,8 @@
 package org.cesarferreira.kotlinstarterkit.features.listing
 
-import org.cesarferreira.kotlinstarterkit.framework.base.BasePresenter
-import org.cesarferreira.kotlinstarterkit.data.entities.mappers.MovieEntityToMovieDO
+import org.cesarferreira.kotlinstarterkit.data.entities.mappers.MovieToMovieDO
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
+import org.cesarferreira.kotlinstarterkit.framework.base.BasePresenter
 import org.cesarferreira.kotlinstarterkit.framework.executor.BackgroundThread
 import org.cesarferreira.kotlinstarterkit.framework.executor.UIThread
 import javax.inject.Inject
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Singleton
 class ListItemsPresenter
 @Inject constructor(private val service: MoviesService,
-                    private val movieEntityToMovieDO: MovieEntityToMovieDO,
+                    private val movieToMovieDO: MovieToMovieDO,
                     private val backgroundThread: BackgroundThread,
                     private val uiThread: UIThread) : BasePresenter<ListItemsView>() {
 
@@ -23,7 +23,7 @@ class ListItemsPresenter
 
     fun fetchData() {
         subscription = service.getMovies()
-                .map({ movieEntityToMovieDO.transform(it.data) })
+                .map({ movieToMovieDO.transform(it.data) })
                 .subscribeOn(backgroundThread.ioScheduler)
                 .observeOn(uiThread.scheduler)
                 .doOnSubscribe({ showLoading() })

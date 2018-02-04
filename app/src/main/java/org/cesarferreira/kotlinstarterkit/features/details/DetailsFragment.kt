@@ -5,7 +5,7 @@ import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.cesarferreira.kotlinstarterkit.R
-import org.cesarferreira.kotlinstarterkit.data.models.MovieDO
+import org.cesarferreira.kotlinstarterkit.data.models.MovieDetailsDO
 import org.cesarferreira.kotlinstarterkit.features.common.Constants
 import org.cesarferreira.kotlinstarterkit.framework.BaseFragment
 import javax.inject.Inject
@@ -28,7 +28,7 @@ class DetailsFragment : BaseFragment(), DetailsView {
         presenter.fetchData(activity!!.intent.getStringExtra(Constants.ITEM_KEY))
     }
 
-    override fun displayDetails(movieDO: MovieDO) {
+    override fun displayDetails(movieDO: MovieDetailsDO) {
 
         movieCast.text = movieDO.cast
         movieDirector.text = movieDO.director

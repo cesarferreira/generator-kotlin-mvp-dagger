@@ -1,10 +1,10 @@
 package org.cesarferreira.kotlinstarterkit.di
 
 
-import org.cesarferreira.kotlinstarterkit.framework.executor.BackgroundThread
-import org.cesarferreira.kotlinstarterkit.framework.executor.UIThread
 import dagger.Module
 import dagger.Provides
+import org.cesarferreira.kotlinstarterkit.domain.executor.BackgroundThread
+import org.cesarferreira.kotlinstarterkit.domain.executor.UIThread
 import javax.inject.Singleton
 
 @Module

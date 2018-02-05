@@ -2,8 +2,8 @@ package org.cesarferreira.kotlinstarterkit.di
 
 import dagger.Component
 import org.cesarferreira.kotlinstarterkit.MyApplication
-import org.cesarferreira.kotlinstarterkit.features.details.DetailsFragment
-import org.cesarferreira.kotlinstarterkit.features.listing.ListItemsFragment
+import org.cesarferreira.kotlinstarterkit.presentation.features.details.DetailsFragment
+import org.cesarferreira.kotlinstarterkit.presentation.features.listing.ListItemsFragment
 import javax.inject.Singleton
 
 @Singleton

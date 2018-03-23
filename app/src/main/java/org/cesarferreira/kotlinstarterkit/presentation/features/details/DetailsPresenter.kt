@@ -2,9 +2,8 @@ package org.cesarferreira.kotlinstarterkit.presentation.features.details
 
 import org.cesarferreira.kotlinstarterkit.data.models.mappers.MovieDetailsApiToMovieDetailsMapper
 import org.cesarferreira.kotlinstarterkit.data.network.MoviesService
-import org.cesarferreira.kotlinstarterkit.domain.executor.BackgroundThread
-import org.cesarferreira.kotlinstarterkit.domain.executor.UIThread
 import org.cesarferreira.kotlinstarterkit.presentation.framework.base.BasePresenter
+import org.cesarferreira.kotlinstarterkit.schedulers.SchedulersProvider
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,8 +11,7 @@ import javax.inject.Singleton
 class DetailsPresenter
 @Inject constructor(private val service: MoviesService,
                     private val movieDetailsApiToMovieDetailsMapper: MovieDetailsApiToMovieDetailsMapper,
-                    private val backgroundThread: BackgroundThread,
-                    private val uiThread: UIThread) : BasePresenter<DetailsView>() {
+                    private val schedulersProvider: SchedulersProvider) : BasePresenter<DetailsView>() {
 
     private lateinit var mView: DetailsView
 
@@ -25,8 +23,8 @@ class DetailsPresenter
         subscription = service.getMovieDetails(id)
                 .toObservable()
                 .map({ source -> movieDetailsApiToMovieDetailsMapper.transform(source) })
-                .subscribeOn(backgroundThread.ioScheduler)
-                .observeOn(uiThread.scheduler)
+                .subscribeOn(schedulersProvider.io())
+                .observeOn(schedulersProvider.mainThread())
                 .doOnSubscribe({ mView.showLoading() })
                 .doOnComplete({ mView.hideLoading() })
                 .subscribe(

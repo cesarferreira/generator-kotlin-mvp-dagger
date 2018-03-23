@@ -12,6 +12,6 @@ class MovieApiToMovieMapper
     : BaseMapper<MovieApi, Movie>() {
 
     override fun transform(source: MovieApi): Movie {
-        return Movie(source.id, source.poster)
+        return Movie(source.id, source.title, source.poster)
     }
 }

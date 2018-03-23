@@ -10,7 +10,8 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(
         ApplicationModule::class,
         ImageLoadingModule::class,
-        NetworkModule::class)
+        NetworkModule::class,
+        SystemModule::class)
 )
 interface ApplicationComponent {
     fun inject(target: MyApplication)

@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
 
-import cesarferreira.movies.schedulers.SchedulersProvider
-import cesarferreira.movies.schedulers.SchedulersProviderImpl
+import cesarferreira.movies.presentation.framework.schedulers.SchedulersProvider
+import cesarferreira.movies.presentation.framework.schedulers.SchedulersProviderImpl
 
 import javax.inject.Singleton
 

@@ -1,6 +1,6 @@
 package cesarferreira.movies.presentation.features.details
 
-import cesarferreira.movies.domain.entities.MovieDetails
+import cesarferreira.movies.domain.MovieDetails
 import cesarferreira.movies.presentation.features.common.ErrorView
 import cesarferreira.movies.presentation.features.common.LoadingView
 import cesarferreira.movies.presentation.framework.base.BaseView

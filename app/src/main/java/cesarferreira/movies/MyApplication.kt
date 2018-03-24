@@ -1,16 +1,18 @@
 package cesarferreira.movies
 
 import android.app.Application
-import com.squareup.leakcanary.LeakCanary
 import cesarferreira.movies.data.network.Endpoints
-import cesarferreira.movies.di.*
+import cesarferreira.movies.di.ApplicationComponent
+import cesarferreira.movies.di.ApplicationModule
+import cesarferreira.movies.di.DaggerApplicationComponent
+import cesarferreira.movies.di.NetworkModule
+import com.squareup.leakcanary.LeakCanary
 
 class MyApplication : Application() {
 
     val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
-                .imageLoadingModule(ImageLoadingModule())
                 .networkModule(NetworkModule(Endpoints.BASE_URL))
                 .build()
     }

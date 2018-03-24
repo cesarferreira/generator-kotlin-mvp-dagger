@@ -1,4 +1,4 @@
-package cesarferreira.movies.domain.entities
+package cesarferreira.movies.domain
 
 data class MovieDetails(val id: String?,
                         val title: String?,

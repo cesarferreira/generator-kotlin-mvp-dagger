@@ -33,6 +33,7 @@
     </style>
 
     <style name="MovieDetailsTitle">
+        <item name="android:textStyle">bold</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextSecondary</item>
@@ -43,6 +44,7 @@
     </style>
 
     <style name="MovieDetailsText" parent="MovieDetailsTitle">
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">@dimen/movie_details_text</item>
         <item name="android:paddingBottom">25dp</item>

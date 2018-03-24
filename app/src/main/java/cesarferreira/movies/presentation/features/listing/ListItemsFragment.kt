@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_list_items.*
 import cesarferreira.movies.R
-import cesarferreira.movies.domain.entities.Movie
+import cesarferreira.movies.domain.Movie
 import cesarferreira.movies.presentation.framework.base.BaseFragment
 import cesarferreira.movies.presentation.navigation.Navigator
 import javax.inject.Inject

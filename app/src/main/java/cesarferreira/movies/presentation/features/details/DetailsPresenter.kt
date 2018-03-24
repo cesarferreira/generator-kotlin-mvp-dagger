@@ -1,6 +1,5 @@
 package cesarferreira.movies.presentation.features.details
 
-import cesarferreira.movies.data.models.mappers.MovieDetailsApiToMovieDetailsMapper
 import cesarferreira.movies.data.network.MoviesService
 import cesarferreira.movies.presentation.framework.base.BasePresenter
 import cesarferreira.movies.presentation.framework.schedulers.SchedulersProvider

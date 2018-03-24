@@ -7,7 +7,7 @@ import com.bskyb.v3app.framework.extension.inflate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import cesarferreira.movies.R
-import cesarferreira.movies.domain.entities.Movie
+import cesarferreira.movies.domain.Movie
 
 class ListItemsAdapter(private val picasso: Picasso,
                        private val items: ArrayList<Movie>,

@@ -6,7 +6,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 import cesarferreira.movies.R
-import cesarferreira.movies.domain.entities.MovieDetails
+import cesarferreira.movies.domain.MovieDetails
 import cesarferreira.movies.presentation.features.common.Constants
 import cesarferreira.movies.presentation.framework.base.BaseFragment
 import javax.inject.Inject
@@ -26,6 +26,12 @@ class DetailsFragment : BaseFragment(), DetailsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
+
+//        shimmer_view_container.startShimmerAnimation()
+//        shimmer_view_container.
+
+
+
         presenter.fetchData(activity!!.intent.getStringExtra(Constants.ITEM_KEY))
     }
 
@@ -45,7 +51,7 @@ class DetailsFragment : BaseFragment(), DetailsView {
     }
 
     override fun hideLoading() {
-        progressBar.visibility = View.GONE
+//        progressBar.visibility = View.GONE
     }
 
     override fun showError(throwable: Throwable) {
@@ -53,7 +59,7 @@ class DetailsFragment : BaseFragment(), DetailsView {
     }
 
     override fun showLoading() {
-        progressBar.visibility = View.VISIBLE
+//        progressBar.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {

@@ -1,6 +1,5 @@
 package cesarferreira.movies.features.details
 
-import cesarferreira.movies.data.network.MoviesService
 import cesarferreira.movies.framework.base.BasePresenter
 import cesarferreira.movies.framework.schedulers.SchedulersProvider
 import javax.inject.Inject
@@ -8,15 +7,17 @@ import javax.inject.Singleton
 
 @Singleton
 class DetailsPresenter
-@Inject constructor(private val service: MoviesService,
-                    private val movieDetailsApiToMovieDetailsMapper: MovieDetailsApiToMovieDetailsMapper,
+@Inject constructor(private val getMovieDetailUseCase: GetMovieDetailUseCase,
+                    private val movieDetailsToMovieDetailsViewModelMapper: MovieDetailsToMovieDetailsViewModelMapper,
                     private val schedulersProvider: SchedulersProvider)
     : BasePresenter<DetailsView>() {
 
     fun fetchData(id: String) {
-        compositeDisposable.add(service.getMovieDetails(id)
+        val params = GetMovieDetailUseCase.Params(id)
+
+        compositeDisposable.add(getMovieDetailUseCase.buildUseCase(params)
                 .toObservable()
-                .map({ source -> movieDetailsApiToMovieDetailsMapper.transform(source) })
+                .map({ movieDetailsToMovieDetailsViewModelMapper.transform(it) })
                 .subscribeOn(schedulersProvider.io())
                 .observeOn(schedulersProvider.mainThread())
                 .doOnSubscribe({ view!!.showLoading() })

@@ -9,7 +9,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(
         ApplicationModule::class,
-        ImageLoadingModule::class,
         NetworkModule::class,
         SystemModule::class)
 )

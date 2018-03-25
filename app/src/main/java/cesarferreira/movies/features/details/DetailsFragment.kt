@@ -2,10 +2,10 @@ package cesarferreira.movies.features.details
 
 import android.os.Bundle
 import android.view.View
+import cesarferreira.faker.loadFromUrl
 import cesarferreira.movies.R
 import cesarferreira.movies.features.common.Constants
 import cesarferreira.movies.framework.base.BaseFragment
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
@@ -14,7 +14,6 @@ class DetailsFragment : BaseFragment(), DetailsView {
 
     override fun layoutId(): Int = R.layout.fragment_details
 
-    @Inject lateinit var picasso: Picasso
     @Inject lateinit var presenter: DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,7 @@ class DetailsFragment : BaseFragment(), DetailsView {
         presenter.fetchData(activity!!.intent.getStringExtra(Constants.ITEM_KEY))
     }
 
-    override fun displayDetails(movie: MovieDetails) {
+    override fun displayDetails(movie: MovieDetailsViewModel) {
 
         movieCast.text = movie.cast
         movieDirector.text = movie.director
@@ -38,10 +37,9 @@ class DetailsFragment : BaseFragment(), DetailsView {
 
         activity!!.toolbar.title = movie.title
 
-        picasso.load(movie.poster)
-                .placeholder(R.color.black)
-                .error(R.color.picassoError)
-                .into(moviePoster)
+        moviePoster.loadFromUrl(url = movie.poster,
+                placeholder = R.color.black,
+                error = R.color.picassoError)
     }
 
     override fun hideLoading() {

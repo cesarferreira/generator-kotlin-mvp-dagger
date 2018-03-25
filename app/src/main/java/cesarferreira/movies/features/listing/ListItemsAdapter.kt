@@ -3,13 +3,12 @@ package cesarferreira.movies.features.listing
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import cesarferreira.faker.loadFromUrl
 import cesarferreira.movies.R
 import com.bskyb.v3app.framework.extension.inflate
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class ListItemsAdapter(private val picasso: Picasso,
-                       private val items: ArrayList<MovieViewModel>,
+class ListItemsAdapter(private val items: ArrayList<MovieViewModel>,
                        private val onMovieClickListener: OnMovieClickListener)
     : RecyclerView.Adapter<ListItemsAdapter.ItemViewHolder>() {
 
@@ -21,18 +20,17 @@ class ListItemsAdapter(private val picasso: Picasso,
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val movie = items[position]
-        holder.bind(picasso, movie)
+        holder.bind(movie)
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(picasso: Picasso, movie: MovieViewModel) {
+        fun bind(movie: MovieViewModel) {
 
             itemView.setOnClickListener { movie.id.let { id -> onMovieClickListener.onClick(id) } }
 
-            picasso.load(movie.poster)
-                    .placeholder(R.color.black)
-                    .error(R.color.picassoError)
-                    .into(itemView.thumbnail)
+            itemView.thumbnail.loadFromUrl(url = movie.poster,
+                    placeholder = R.color.black,
+                    error = R.color.picassoError)
         }
     }
 }

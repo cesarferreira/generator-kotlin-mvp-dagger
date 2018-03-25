@@ -9,14 +9,20 @@ abstract class BasePresenter<T : BaseView> {
     protected var view: T? = null
 
     open fun attachView(view: T?) {
-        if (view == null) throw NullPointerException("View is null, maybe you want to use detachView instead")
+        if (view == null) {
+            throw NullPointerException("View is null, maybe you want to use detachView instead")
+        }
 
         this.view = view
-        if (compositeDisposable.isDisposed) compositeDisposable.clear()
+        if (compositeDisposable.isDisposed) {
+            compositeDisposable.clear()
+        }
     }
 
     open fun detachView() {
         this.view = null
-        if (compositeDisposable.isDisposed) compositeDisposable.clear()
+        if (compositeDisposable.isDisposed) {
+            compositeDisposable.clear()
+        }
     }
 }

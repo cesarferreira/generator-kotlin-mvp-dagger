@@ -5,5 +5,5 @@ import cesarferreira.movies.features.common.LoadingView
 import cesarferreira.movies.framework.base.BaseView
 
 interface DetailsView : BaseView, LoadingView, ErrorView {
-    fun displayDetails(movie: MovieDetails)
+    fun displayDetails(movie: MovieDetailsViewModel)
 }

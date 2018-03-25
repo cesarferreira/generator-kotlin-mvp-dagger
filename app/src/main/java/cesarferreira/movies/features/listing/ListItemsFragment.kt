@@ -14,7 +14,6 @@ import javax.inject.Inject
 class ListItemsFragment : BaseFragment(), ListItemsView {
 
     @Inject lateinit var navigator: Navigator
-    @Inject lateinit var picasso: Picasso
     @Inject lateinit var presenter: ListItemsPresenter
 
     private lateinit var adapter: ListItemsAdapter
@@ -42,7 +41,7 @@ class ListItemsFragment : BaseFragment(), ListItemsView {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
 
-        adapter = ListItemsAdapter(picasso, items, object : OnMovieClickListener {
+        adapter = ListItemsAdapter(items, object : OnMovieClickListener {
             override fun onClick(id: String) {
                 context?.let { navigator.navigateToDetails(it, id) }
             }

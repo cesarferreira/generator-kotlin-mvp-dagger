@@ -18,7 +18,7 @@ class ListItemsFragment : BaseFragment(), ListItemsView {
     @Inject lateinit var presenter: ListItemsPresenter
 
     private lateinit var adapter: ListItemsAdapter
-    private var items = ArrayList<Movie>()
+    private var items = ArrayList<MovieViewModel>()
 
     override fun layoutId(): Int = R.layout.fragment_list_items
 
@@ -51,7 +51,7 @@ class ListItemsFragment : BaseFragment(), ListItemsView {
         recyclerView.adapter = adapter
     }
 
-    override fun displayData(data: List<Movie>) {
+    override fun displayData(data: List<MovieViewModel>) {
         items.addAll(data)
         adapter.notifyDataSetChanged()
     }

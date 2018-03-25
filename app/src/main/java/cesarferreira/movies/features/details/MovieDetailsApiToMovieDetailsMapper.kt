@@ -6,7 +6,8 @@ import javax.inject.Singleton
 
 @Singleton
 class MovieDetailsApiToMovieDetailsMapper
-@Inject constructor() : BaseMapper<MovieDetailsApi, MovieDetails>() {
+@Inject constructor()
+    : BaseMapper<MovieDetailsApi, MovieDetails>() {
     override fun transform(source: MovieDetailsApi): MovieDetails {
         return MovieDetails(
                 source.id,
@@ -17,5 +18,4 @@ class MovieDetailsApiToMovieDetailsMapper
                 source.summary,
                 source.poster)
     }
-
 }

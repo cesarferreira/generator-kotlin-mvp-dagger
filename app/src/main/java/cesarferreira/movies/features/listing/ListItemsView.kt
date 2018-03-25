@@ -5,5 +5,5 @@ import cesarferreira.movies.features.common.LoadingView
 import cesarferreira.movies.framework.base.BaseView
 
 interface ListItemsView : BaseView, LoadingView, ErrorView {
-    fun displayData(data: List<Movie>)
+    fun displayData(data: List<MovieViewModel>)
 }

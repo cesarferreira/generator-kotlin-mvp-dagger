@@ -1,17 +1,12 @@
 package cesarferreira.movies.di
 
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-
-
-import cesarferreira.movies.presentation.framework.schedulers.SchedulersProvider
-import cesarferreira.movies.presentation.framework.schedulers.SchedulersProviderImpl
-
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class SystemModule {
@@ -24,7 +19,7 @@ class SystemModule {
 
     @Singleton
     @Provides
-    protected fun providesSchedulers(): SchedulersProvider {
-        return SchedulersProviderImpl()
+    protected fun providesSchedulers(): cesarferreira.movies.framework.schedulers.SchedulersProvider {
+        return cesarferreira.movies.framework.schedulers.SchedulersProviderImpl()
     }
 }

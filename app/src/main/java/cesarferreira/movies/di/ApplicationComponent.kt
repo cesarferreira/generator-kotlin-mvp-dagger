@@ -1,9 +1,9 @@
 package cesarferreira.movies.di
 
-import dagger.Component
 import cesarferreira.movies.MyApplication
-import cesarferreira.movies.presentation.features.details.DetailsFragment
-import cesarferreira.movies.presentation.features.listing.ListItemsFragment
+import cesarferreira.movies.features.details.DetailsFragment
+import cesarferreira.movies.features.listing.ListItemsFragment
+import dagger.Component
 import javax.inject.Singleton
 
 @Singleton

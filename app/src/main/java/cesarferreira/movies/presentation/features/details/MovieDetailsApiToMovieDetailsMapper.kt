@@ -1,7 +1,6 @@
 package cesarferreira.movies.presentation.features.details
 
 import cesarferreira.movies.data.models.MovieDetailsApi
-import cesarferreira.movies.domain.MovieDetails
 import cesarferreira.movies.presentation.framework.base.BaseMapper
 import javax.inject.Inject
 import javax.inject.Singleton

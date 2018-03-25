@@ -1,16 +1,15 @@
 package cesarferreira.movies.presentation.features.listing
 
-import cesarferreira.movies.data.models.MovieApi
 import cesarferreira.movies.presentation.framework.base.BaseMapper
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieApiToMovieMapper
+class MovieToMovieViewModelMapper
 @Inject constructor()
-    : BaseMapper<MovieApi, Movie>() {
+    : BaseMapper<Movie, MovieViewModel>() {
 
-    override fun transform(source: MovieApi): Movie {
-        return Movie(source.id, source.poster)
+    override fun transform(source: Movie): MovieViewModel {
+        return MovieViewModel(source.id!!, source.poster!!)
     }
 }

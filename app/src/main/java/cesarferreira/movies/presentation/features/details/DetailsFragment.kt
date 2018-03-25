@@ -6,7 +6,6 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 import cesarferreira.movies.R
-import cesarferreira.movies.domain.MovieDetails
 import cesarferreira.movies.presentation.features.common.Constants
 import cesarferreira.movies.presentation.framework.base.BaseFragment
 import javax.inject.Inject
@@ -29,8 +28,6 @@ class DetailsFragment : BaseFragment(), DetailsView {
 
 //        shimmer_view_container.startShimmerAnimation()
 //        shimmer_view_container.
-
-
 
         presenter.fetchData(activity!!.intent.getStringExtra(Constants.ITEM_KEY))
     }

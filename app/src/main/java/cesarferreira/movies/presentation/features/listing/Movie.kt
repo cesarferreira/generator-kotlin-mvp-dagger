@@ -1,5 +1,4 @@
-package cesarferreira.movies.domain
+package cesarferreira.movies.presentation.features.listing
 
 data class Movie(val id: String?,
-                 val title: String?,
                  val poster: String?)
